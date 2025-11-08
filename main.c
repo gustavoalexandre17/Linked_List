@@ -1,22 +1,18 @@
-#include "lista.h"
-#include <stdio.h>
+#include "list.h"
+
 int main() {
+  int valor1 = 12;
+  float valor2 = 12.123;
+  char valor3[] = "ai dento";
+  float valor4 = 129.78;
 
-  Lista *minha_lista = criar_lista();
-  inserir_lista_inicio(minha_lista, 10);
-  inserir_lista_inicio(minha_lista, 20);
-  inserir_lista_inicio(minha_lista, 30);
-  inserir_lista_final(minha_lista, 100);
-  visualizar_lista(minha_lista);
+  List *list = new_list();
 
-  int valor;
-  /*
-    printf("Valor a ser removido: ");
-    scanf("%d", &valor);
+  list_append(list, &valor1, sizeof(valor1), print_int);
+  list_append(list, &valor2, sizeof(valor2), print_float);
+  list_append(list, &valor3, sizeof(valor3), print_string);
+  list_append(list, &valor4, sizeof(valor4), print_float);
 
-    remover_elemento(minha_lista, valor);
-    visualizar_lista(minha_lista);
-  */
-  free_lista(minha_lista);
-  return 0;
+  print(list);
+  free_list(list);
 }
